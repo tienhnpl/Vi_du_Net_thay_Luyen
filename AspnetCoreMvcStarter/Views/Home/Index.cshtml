@@ -1,0 +1,57 @@
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+             <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+                         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" />
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <div class="text-center">
+      <h1 class="display-4">Users Data</h1>
+      <table id="userTable" class="table table-striped table-bordered" >
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+              </tr>
+          </thead>
+          <tbody>
+          </tbody>
+      </table>
+  </div>
+  <script>
+  // $(document).ready(function() {
+  //    $('#userTable').DataTable({
+  //     ajax: {
+  //            url: '/api/users',
+  //            type: 'GET',
+  //            dataSrc: function (json) {
+  //              // Lấy dữ liệu từ thuộc tính "items" của response
+  //              return json.items;
+  //          },
+  //        },
+  //     columns: [
+  //             { data: 'id' },
+  //             { data: 'firstName' },
+  //             { data: 'lastName' },
+  //             { data: 'email' }
+  //         ]
+  //     });
+  // });
+  </script>
+</body>
+</html>
+
+
+

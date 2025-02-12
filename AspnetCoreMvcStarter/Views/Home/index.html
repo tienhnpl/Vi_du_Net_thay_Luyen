@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DataTables Example</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+  <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.7.0.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+
+<table id="myTable">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>City</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>John Doe</td>
+    <td>30</td>
+    <td>New York</td>
+  </tr>
+  <tr>
+    <td>Jane Smith</td>
+    <td>25</td>
+    <td>London</td>
+  </tr>
+  <tr>
+    <td>Peter Jones</td>
+    <td>35</td>
+    <td>Paris</td>
+  </tr>
+  <tr>
+    <td>Alice Brown</td>
+    <td>22</td>
+    <td>Tokyo</td>
+  </tr>
+  <tr>
+    <td>Bob Lee</td>
+    <td>28</td>
+    <td>Sydney</td>
+  </tr>
+  <tr>
+    <td>Charlie Davis</td>
+    <td>32</td>
+    <td>Berlin</td>
+  </tr>
+  </tbody>
+</table>
+
+<script>
+  $(document).ready( function () {
+    $('#myTable').DataTable();
+  } );
+</script>
+</body>
+</html>

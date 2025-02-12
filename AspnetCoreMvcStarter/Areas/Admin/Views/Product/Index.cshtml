@@ -1,0 +1,103 @@
+@model IEnumerable<AspnetCoreMvcStarter.Areas.Admin.Models.Product>
+
+@{
+    ViewData["Title"] = "T2308E Admin - Danh sách sản phẩm";
+}
+
+@section VendorStyles {
+<link rel="stylesheet" href="~/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
+<link rel="stylesheet" href="~/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css">
+<link rel="stylesheet" href="~/vendor/libs/flatpickr/flatpickr.css" />
+}
+
+@section VendorScripts {
+<script src="~/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+<!-- Flat Picker -->
+<script src="~/vendor/libs/moment/moment.js"></script>
+<script src="~/vendor/libs/flatpickr/flatpickr.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+}
+
+@section PageScripts {
+  <script>
+        var dataTable = $('.dt-advanced-search');
+        dataTable.DataTable({
+          processing: true,
+          serverSide: true,
+          ajax: {
+              url: '/api/users',
+              type: 'GET',
+              data: function (d) {
+                  d.page = (d.start / d.length) + 1;
+                  d.pageSize = d.length;
+                  d.search = d.search.value;
+                  d.orderColumn = d.columns[d.order[0].column].data;
+                  d.orderDir = d.order[0].dir;
+                  return d;
+              },
+              dataSrc: 'data'
+          },
+          columns: [
+                { data: 'id' },
+                { data: 'firstName' },
+                { data: 'lastName' },
+                { data: 'email' },
+                {
+                      data: null,
+                      orderable: false,
+                      searchable: false,
+                      render: function (data, type, row) {
+                          return '<button class="btn btn-sm btn-primary btn-edit" data-id="' + row.id + '">Sửa</button> ' +
+                              '<button class="btn btn-sm btn-danger btn-delete" data-id="' + row.id + '">Xóa</button> ' +
+                              '<button class="btn btn-sm btn-info btn-detail" data-id="' + row.id + '">Chi tiết</button>';
+                      }
+                }
+            ]
+          });
+        dataTable.on('click', '.btn-edit', function () {
+            var productId = $(this).data('id');
+            window.location.href = '/Admin/Products/' + productId;
+        });
+        dataTable.on('click', '.btn-delete', function () {
+            var productId = $(this).data('id');
+            if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này không?")) {
+              $.ajax({
+                url: '/Admin/Api/Products/' + productId,
+                type: 'DELETE',
+                success: function (result) {
+                   $('.dt-advanced-search').DataTable().ajax.reload();
+                },
+                error: function(error)
+                {
+                    alert('Xóa không thành công, lỗi: ' + error.responseText);
+                }
+          });
+       }
+        });
+        dataTable.on('click', '.btn-detail', function () {
+            var productId = $(this).data('id');
+            window.location.href = '/Admin/Products/' + productId;
+       });
+  </script>
+}
+
+ <!-- Advanced Search -->
+ <div class="card">
+   <h5 class="card-header">List  Search</h5>
+   <div class="card-datatable table-responsive">
+     <table class="dt-advanced-search table border-top">
+       <thead>
+       <tr>
+         <tr>
+             <th>Id</th>
+             <th>First Name</th>
+             <th>Last Name</th>
+             <th>Email</th>
+             <th>Action</th>
+           </tr>
+       </tr>
+       </thead>
+     </table>
+   </div>
+ </div>
+<!--/ Advanced Search -->

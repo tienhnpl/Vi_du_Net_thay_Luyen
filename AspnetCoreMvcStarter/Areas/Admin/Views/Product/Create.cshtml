@@ -1,0 +1,78 @@
+@model AspnetCoreMvcStarter.Areas.Admin.Models.Product
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+@section VendorStyles{
+<link rel="stylesheet" href="~/vendor/libs/bootstrap-select/bootstrap-select.css" />
+<link rel="stylesheet" href="~/vendor/libs/select2/select2.css" />
+<link rel="stylesheet" href="~/vendor/libs/flatpickr/flatpickr.css" />
+<link rel="stylesheet" href="~/vendor/libs/typeahead-js/typeahead.css" />
+<link rel="stylesheet" href="~/vendor/libs/tagify/tagify.css" />
+<link rel="stylesheet" href="~/vendor/libs/&#64;form-validation/form-validation.css" />
+}
+
+@section VendorScripts{
+<script src="~/vendor/libs/select2/select2.js"></script>
+<script src="~/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+<script src="~/vendor/libs/moment/moment.js"></script>
+<script src="~/vendor/libs/flatpickr/flatpickr.js"></script>
+<script src="~/vendor/libs/typeahead-js/typeahead.js"></script>
+<script src="~/vendor/libs/tagify/tagify.js"></script>
+<script src="~/vendor/libs/&#64;form-validation/popular.js"></script>
+<script src="~/vendor/libs/&#64;form-validation/bootstrap5.js"></script>
+<script src="~/vendor/libs/&#64;form-validation/auto-focus.js"></script>
+}
+
+@section PageScripts {
+<script src="~/js/form-validation.js"></script>
+}
+
+<div class="row">
+  <!-- FormValidation -->
+  <div class="col-12">
+    <div class="card">
+      <h5 class="card-header">Tạo mới sản phẩm</h5>
+      <div class="card-body">
+
+        <form id="formValidationExamples" class="row g-6" asp-action="Create">
+
+          <!-- Account Details -->
+
+          <div class="col-12">
+            <h6>1. Thông tin cơ bản</h6>
+            <hr class="mt-0" />
+          </div>
+          <div class="col-md-6">
+            <label asp-for="Title" class="form-label"></label>
+            <input asp-for="Title" class="form-control" placeholder="Tên sản phẩm"/>
+          </div>
+          <div class="col-md-6">
+            <label asp-for="Description" class="form-label"></label>
+            <input asp-for="Description" class="form-control" placeholder="Mô tả ngắn gọn về sản phẩm"/>
+          </div>
+          <div class="col-md-6">
+            <label asp-for="Price" class="form-label"></label>
+            <input asp-for="Price" class="form-control" placeholder="Giá"/>
+          </div>
+          <div class="col-md-6">
+            <label asp-for="ImageUrl" class="form-label"></label>
+            <input asp-for="ImageUrl" class="form-control" placeholder="Ảnh sản phẩm"/>
+          </div>
+          <div class="col-12">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="formValidationCheckbox" name="formValidationCheckbox" />
+              <label class="form-check-label" for="formValidationCheckbox">Agree to our terms and conditions</label>
+            </div>
+          </div>
+          <div class="col-12">
+            <button type="submit" name="submitButton" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- /FormValidation -->
+</div>
+
