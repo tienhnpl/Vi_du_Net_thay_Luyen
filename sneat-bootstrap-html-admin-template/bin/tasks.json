@@ -1,0 +1,25 @@
+{
+  "name": "MyAdmin",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "format": "npm run format:prettier && npm run format:html",
+    "format:prettier": "node_modules/.bin/prettier --config .prettierrc.json \"**/*.{ts,css, scss,less,js}\" --write",
+    "format:html": "node bin/glob-ls.js '**/*.html' | xargs node_modules/.bin/html-beautify -r"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "gulp-environment": {
+    "environments": [
+      {
+        "name": "development",
+        "aliases": ["dev"]
+      },
+      {
+        "name": "production",
+        "aliases": ["prod"]
+      }
+    ],
+    "default": "development"
+  }
+}
